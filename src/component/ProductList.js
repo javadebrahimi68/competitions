@@ -4,13 +4,15 @@ import { ProductItem } from './ProductItem'
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import useWindowDimensions from './dimentions'
+import useWindowDimensions from './dimentions';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 export const ProductList = ({ data }) => {
 
 
     const { width, cols } = useWindowDimensions();
 
-  
+
 
 
     return (
@@ -26,10 +28,15 @@ export const ProductList = ({ data }) => {
                 cols={cols - 1}
                 gap={8}
             >
-                {data.map((item) => (
-                    <ProductItem item={item} />
-                ))}
+             
+
+                    {data.map((item) => (
+
+                        <ProductItem item={item} />
+                    ))}
+              
             </ImageList>
         </Box>
+
     )
 }
