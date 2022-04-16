@@ -1,5 +1,10 @@
+body {
+  background: #f8f8f8;
+}
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -81,11 +86,14 @@
   background-color: white;
 }
 
-.button-white {
-  background-color: 'white' !important;
-
-  color: 'black' !important;
-  font-weight: '700' !important;
-  text-transform: 'none' !important;
+.bwhite {
+  /* background: fixed; */
+ 
+  background-color: #e60023;
+  color: black;
+  font-weight: bold;
+  text-transform: none;
+  margin-bottom: 30px;
+  margin-left: 30px;
 
 }
