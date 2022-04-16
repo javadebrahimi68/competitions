@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+.redtick{
+  margin-top: 1px;
+  height: 6px;
+  width: 6px;
+
+  margin-left: 4px;
+
+  border-radius: 50%;
+
+  box-sizing: border-box;
+
+  background-color: #e60023;
+
+}
+
