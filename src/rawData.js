@@ -1,4 +1,4 @@
-[
+export const rawData=[
     {
         "page_id": "19628662544",
         "url": "http:\/\/reddressboutique.com\/products\/so-divine-ivory-tweed-bag",

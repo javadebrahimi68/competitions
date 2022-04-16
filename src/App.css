@@ -32,11 +32,13 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
-.redtick{
+
+.redtick {
   margin-top: 1px;
   height: 6px;
   width: 6px;
@@ -51,3 +53,18 @@
 
 }
 
+.moreIcon {
+  height: 32px;
+  width: 32px;
+
+  border-radius: 50% ;
+
+
+  align-items: center;
+color: black !important;
+  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
+  text-transform: none !important;
+  background-color: #efefef !important;
+}
