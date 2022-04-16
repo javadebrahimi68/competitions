@@ -57,14 +57,35 @@
   height: 32px;
   width: 32px;
 
-  border-radius: 50% ;
+  border-radius: 50%;
 
 
   align-items: center;
-color: black !important;
+  color: black !important;
   display: flex;
   padding-left: 8px;
   padding-right: 8px;
   text-transform: none !important;
   background-color: #efefef !important;
+}
+
+.product-item-image {
+
+  box-shadow: 10px;
+  border-radius: 20px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
+  max-width: 235px;
+  background-color: white;
+}
+
+.button-white {
+  background-color: 'white' !important;
+
+  color: 'black' !important;
+  font-weight: '700' !important;
+  text-transform: 'none' !important;
+
 }
