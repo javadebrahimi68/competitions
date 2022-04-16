@@ -6,35 +6,35 @@ import PrimarySearchAppBar from './component/MyAppBar';
 
 import { ProductList } from './component/ProductList';
 import { TopContent } from './component/TopContent';
-//import { rawData } from './rawData';
+import { rawData1 } from './rawData';
 
 const App = () => {
 
   const [notFound, setNotFound] = useState(true);
-  const [rawData, setrawData] = useState([]);
+  const [rawData, setrawData] = useState([...rawData1]);
   const [isloading, setIsloadin] = useState(false);
-  const [data, setData] = useState([]);
-  const getFromApi = async () => {
-    try {
-      setIsloadin(true)
-      let response = await fetch('http://xoosha.com/ws/1/test.php?offset=20');
-      let responseJson = await response.json();
-      console.log(responseJson);
-      setrawData([...responseJson]);
-      setData([...responseJson]);
-      setIsloadin(false);
-      return responseJson;
+  const [data, setData] = useState([...rawData1]);
+  // const getFromApi = async () => {
+  //   try {
+  //     setIsloadin(true)
+  //     let response = await fetch('http://xoosha.com/ws/1/test.php?offset=20');
+  //     let responseJson = await response.json();
+  //     console.log(responseJson);
+  //     setrawData([...responseJson]);
+  //     setData([...responseJson]);
+  //     setIsloadin(false);
+  //     return responseJson;
 
-    } catch (error) {
-      console.error(error);
-      setIsloadin(false);
-    }
-  }
-  useEffect(() => {
+  //   } catch (error) {
+  //     console.error(error);
+  //     setIsloadin(false);
+  //   }
+  // }
+  // useEffect(() => {
 
-    getFromApi();
+  //   getFromApi();
 
-  }, [])
+  // }, [])
 
 
   //setrawData(getFromApi());
