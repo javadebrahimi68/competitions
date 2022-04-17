@@ -175,6 +175,7 @@ export default function PrimarySearchAppBar({search}) {
             <img src={logo} alt='P' width='30px' />
           </IconButton>
           <Typography
+         
             variant="h6"
             noWrap
             component="div"
@@ -183,9 +184,13 @@ export default function PrimarySearchAppBar({search}) {
             Home
           </Typography>
           <span className='redtick'></span>
-          <Search sx={{ marginLeft: '50px' }}>
-            <SearchIconWrapper>
+          <Search sx={{ marginLeft: '50px' }}
+        
+          >
+            <SearchIconWrapper  >
+             
               <SearchIcon />
+             
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"

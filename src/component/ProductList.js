@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import useWindowDimensions from './dimentions';
-import InfiniteScroll from 'react-infinite-scroll-component';
+
 
 export const ProductList = ({ data }) => {
 
