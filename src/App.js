@@ -20,6 +20,7 @@ const App = () => {
   const [notFound, setNotFound] = useState(true);
   const [rawData, setrawData] = useState([...rawData1]);
   const [isloading, setIsloadin] = useState(false);
+  const [searchKey,setSearchKey]=useState('');
   //const [data, setData] = useState([...rawData1]);
   //const [showSearch, setShowSearch] = useState(false);
   
@@ -31,7 +32,7 @@ const App = () => {
 
 
   return (
-    <>  <PrimarySearchAppBar search={search}  />
+    <>  <PrimarySearchAppBar search={setSearchKey}  />
      
        
       <div align='center'>
@@ -41,7 +42,7 @@ const App = () => {
         <TopContent />
        {/* <Masonry/> */}
         {/* <ScrollComponent  /> */}
-        <MyInfiniteScroll/>
+        <MyInfiniteScroll searchKey={searchKey}/>
 
       </div>
     </>

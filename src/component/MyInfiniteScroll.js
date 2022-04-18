@@ -1,16 +1,17 @@
-import { Button, CircularProgress, ImageList } from '@mui/material';
+import { Button, CircularProgress, ImageList, ImageListItem } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
+import logo from '../logo.svg';
 import { element } from 'prop-types';
 import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useWindowDimensions from './dimentions';
 import { ProductItem } from './ProductItem';
-
-export const MyInfiniteScroll = () => {
+import { Image, Shimmer } from 'react-shimmer'
+export const MyInfiniteScroll = ({ searchKey }) => {
     const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
-    const [images, setImages] = React.useState([]);
+
     const { cols } = useWindowDimensions();
     const [loaded, setIsLoaded] = React.useState(false);
     const UnsplashImage = ({ url, key }) => (
@@ -57,11 +58,11 @@ export const MyInfiniteScroll = () => {
                 next={() => fetchImages()}
                 hasMore={true}
                 loader={
-                    <p><CircularProgress color="success" /></p>
-                    // <img
-                    //     src="https://res.cloudinary.com/chuloo/image/upload/v1550093026/scotch-logo-gif_jq4tgr.gif"
-                    //     alt="loading"
-                    // />
+                    <>
+                        <p><CircularProgress color="success" /></p>
+
+                    
+                    </>
                 }
             >
                 <div className="image-grid" style={{ marginTop: "30px" }}>
@@ -87,7 +88,7 @@ export const MyInfiniteScroll = () => {
                     </Box>
                 </div>
             </InfiniteScroll>
-        
+
 
 
 
