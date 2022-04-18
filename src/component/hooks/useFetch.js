@@ -13,16 +13,22 @@ function useFetch(query, page) {
       const res = await axios.get(
         `http://xoosha.com/ws/1/test.php?offset=${page}`
       );
-    //   console.log(res.data );
-      await setList((prev)=>
-        [...prev, ...res.data.map((d) =>  d)]
-      );
-    //   console.log('list',list );
+      //   console.log(res.data );
+      setMyList(res);
+     
       setLoading(false);
     } catch (err) {
       setError(err);
     }
   }, [query, page]);
+  const setMyList = async(res) => {
+    await setList(
+      [
+        ...list,
+         ...res.data]
+    );
+    console.log('list',list );
+  }
 
   useEffect(() => {
     sendQuery(query);

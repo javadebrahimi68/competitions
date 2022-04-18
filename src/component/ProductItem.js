@@ -2,7 +2,7 @@ import { Grid, ImageListItem, ImageListItemBar, Typography } from '@mui/material
 import React, { useState } from 'react'
 import { ProductHover } from './ProductHover';
 
-export const ProductItem = ({ item }) => {
+export const ProductItem = ({ item,ind }) => {
   const [mouseHover, setMouseHover] = useState(false);
 
   return (
@@ -11,10 +11,12 @@ export const ProductItem = ({ item }) => {
         onMouseEnter={() => setMouseHover(true)}
         onMouseLeave={() => setMouseHover(false)}
       >
-        <ImageListItem key={item.image_url} sx={{ boxShadow: 0 }} className='product-item-image' >
+      
+        <ImageListItem key={item.id}
+         className='product-item-image' >
           <img style={{ borderRadius: '20px' }}
-            src={`${item.image_url}?w=248&fit=crop&auto=format`}
-            srcSet={`${item.image_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            src={`${item.image_url}`}//?w=248&fit=crop&auto=format`}
+            srcSet={`${item.image_url}`}//?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={item.name}
             loading="lazy"
 

@@ -12,6 +12,7 @@ import { TopContent } from './component/TopContent';
 import { rawData1 } from './rawData';
 import ScrollComponent from './component/ScrollComponent';
 import useFetch from './component/hooks/useFetch';
+import { MyInfiniteScroll } from './component/MyInfiniteScroll';
 
 
 const App = () => {
@@ -38,7 +39,9 @@ const App = () => {
 
 
         <TopContent />
-        <ScrollComponent  />
+       {/* <Masonry/> */}
+        {/* <ScrollComponent  /> */}
+        <MyInfiniteScroll/>
 
       </div>
     </>
