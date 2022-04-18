@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useWindowDimensions from './dimentions';
 import { ProductItem } from './ProductItem';
-import { Image, Shimmer } from 'react-shimmer'
+import { Breathing, Image, Shimmer } from 'react-shimmer'
 export const MyInfiniteScroll = ({ searchKey }) => {
     const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
@@ -27,28 +27,17 @@ export const MyInfiniteScroll = ({ searchKey }) => {
         await console.log(data);
     }
     const fetchImages = () => {
-
-
         setPage(parseInt(page) + 1);
         //console.log(page);
         axios
-
             .get(`http://xoosha.com/ws/1/test.php?offset=${page}`)
-
             .then(res => {
-
                 setData([...data, ...res.data]);
-
                 setIsLoaded(true);
-
             });
-
     };
     useEffect(() => {
-
         fetchImages();
-
-
     }, [])
 
     return (
@@ -60,8 +49,6 @@ export const MyInfiniteScroll = ({ searchKey }) => {
                 loader={
                     <>
                         <p><CircularProgress color="success" /></p>
-
-                    
                     </>
                 }
             >
@@ -73,9 +60,6 @@ export const MyInfiniteScroll = ({ searchKey }) => {
                             // overflowY: 'scroll' 
 
                         }}>
-
-
-
                         <ImageList variant="masonry"
                             cols={cols - 1}
                             gap={8}
@@ -83,15 +67,11 @@ export const MyInfiniteScroll = ({ searchKey }) => {
                             {loaded ?
                                 data.map((element, index) => (
                                     <ProductItem item={element} key={index} />
-                                )) : ""}
+                                )) : ''}
                         </ImageList>
                     </Box>
                 </div>
             </InfiniteScroll>
-
-
-
-
         </div>
     )
 }
