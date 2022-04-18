@@ -13,6 +13,7 @@ import { rawData1 } from './rawData';
 import ScrollComponent from './component/ScrollComponent';
 import useFetch from './component/hooks/useFetch';
 import { MyInfiniteScroll } from './component/MyInfiniteScroll';
+import { Masonry } from './component/Masonry/Masonry';
 
 
 const App = () => {
