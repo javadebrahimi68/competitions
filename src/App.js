@@ -14,26 +14,55 @@ import ScrollComponent from './component/ScrollComponent';
 import useFetch from './component/hooks/useFetch';
 import { MyInfiniteScroll } from './component/MyInfiniteScroll';
 import { Masonry } from './component/Masonry/Masonry';
+import axios from 'axios';
+import useWindowDimensions from './component/dimentions';
 
 
 const App = () => {
 
-  const [notFound, setNotFound] = useState(true);
-  const [rawData, setrawData] = useState([...rawData1]);
-  const [isloading, setIsloadin] = useState(false);
+ 
   const [searchKey,setSearchKey]=useState('');
-  //const [data, setData] = useState([...rawData1]);
-  //const [showSearch, setShowSearch] = useState(false);
+  const [data, setData] = useState([])
   
-//const [searchCount,setsearchCount]=useState();
+  const [page, setPage] = useState(1);
+ 
+
+  const { cols } = useWindowDimensions();
+  const [loaded, setIsLoaded] = React.useState(false);
+  var arr = Array.from({ length: cols }, () => ([]))
+  const fetchData = () => {
+     
+      console.log(page);
+      axios
+          .get(`http://xoosha.com/ws/1/test.php?offset=${page}`)
+          .then(res => {
+              createArray([...res.data]);
+              setIsLoaded(true);
+          });
+          setPage(parseInt(page) + 1);
+  };
+
+  const createArray = (fechdata) => {
+      var i = 1;
+
+      fechdata.forEach(element => {
+          arr[i % cols] = [...arr[i % cols], element];
+          i++;
+
+
+      });
+      setData(arr);
+       console.log('data: ',arr);
+  };
   const search = (key) => {
   //search keys Input
+  
   }
   
 
 
   return (
-    <>  <PrimarySearchAppBar search={setSearchKey}  />
+    <>  <PrimarySearchAppBar search={search}  />
      
        
       <div align='center'>
@@ -41,9 +70,9 @@ const App = () => {
 
 
         <TopContent />
-       {/* <Masonry/> */}
+       <Masonry fetchData={fetchData} data={data} loaded={loaded}/>
         {/* <ScrollComponent  /> */}
-        <MyInfiniteScroll searchKey={searchKey}/>
+        {/* <MyInfiniteScroll searchKey={searchKey}/> */}
 
       </div>
     </>

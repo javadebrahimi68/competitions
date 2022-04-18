@@ -1,26 +1,66 @@
-import React from 'react'
-import './man.css'
+import { CircularProgress } from '@mui/material';
+import { Box } from '@mui/system';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 import { rawData1 } from '../../rawData';
-export const Masonry = () => {
-    const cols = 3;
-    var arr = Array.apply('item', Array(cols));
-    const item = () => {
-        var i = 0;
-        rawData1.map(element => {
-            const item=  (<div style={{ backgroundColor: 'red', width: '235px', height: '100px' }}></div>)
-           arr[i / cols]=[...arr[i / cols],item];
-               
+import useWindowDimensions from '../dimentions';
+import { ProductItem } from '../ProductItem';
 
+export const Masonry = ({fetchData,data,loaded}) => {
+   
+    useEffect(() => {
+        fetchData();
+    }, [])
 
-        })
-        console.log(arr);
-    }
     return (
-        <>{console.log(arr)}
+        <>
+  <InfiniteScroll
+                dataLength={data}
+                next={() => fetchData()}
+                hasMore={true}
+                loader={
+                    <>
+                        <p><CircularProgress color="success" /></p>
+                    </>
+                }
+            >
+            {/* <div className="image-grid" style={{ marginTop: "30px" ,display:'flex'}}> */}
+            <Box className='image-grid'
+                // ml={10} mr={10}
+                sx={{
+                    display: 'inline-flex',
+                    justifyContent: 'space-around',
+                    width: '100%'
+                    //  , height: 450, 
+                    // overflowY: 'scroll' 
 
-            <div style={{ display: 'inline-flex' }}>
-               {item()}
-            </div>
+                }}>
+                {data.map((item) =>
+
+                    <div style={{ width: '235px' }}>
+                        {item.map((element, index) =>
+                            <>
+                                {
+                                    loaded ?
+
+                                    <ProductItem item={element} key={index} />
+
+                                     : ''
+                                }
+
+                            </>
+                        )}
+                    </div>
+
+
+
+                )}
+            </Box>
+            </InfiniteScroll>
+            {/* </div> */}
+
         </>
     );
 }
