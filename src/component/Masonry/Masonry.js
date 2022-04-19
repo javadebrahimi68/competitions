@@ -1,18 +1,10 @@
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Skeleton } from '@mui/material';
 import { Box } from '@mui/system';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
-
-import { rawData1 } from '../../rawData';
-import useWindowDimensions from '../dimentions';
 import { ProductItem } from '../ProductItem';
 
-export const Masonry = ({ fetchData, data, loaded, onSearch }) => {
+export const Masonry = ({ fetchData, data, loaded, onSearch, mySkelton }) => {
 
-    useEffect(() => {
-        fetchData();
-    }, [])
 
     return (
         <>
@@ -23,9 +15,12 @@ export const Masonry = ({ fetchData, data, loaded, onSearch }) => {
                 loader={
                     <>
                         <p style={
-                            onSearch? {display:'none'}:
-                            {display:''}
-                            } ><CircularProgress color="success" /></p>
+                            onSearch ? { display: 'none' } :
+                                { display: '' }
+                        } >
+                            <CircularProgress color="success" />
+                            {/* {mySkelton} */}
+                        </p>
                     </>
                 }
             >
@@ -40,26 +35,24 @@ export const Masonry = ({ fetchData, data, loaded, onSearch }) => {
                         // overflowY: 'scroll' 
 
                     }}>
-                    {data.map((item) =>
 
-                        <div style={{ width: '235px' }}>
-                            {item.map((element, index) =>
-                                <>
-                                    {
-                                        loaded ?
+                    {loaded
+                        ? data.map((item) =>
 
-                                            <ProductItem item={element} key={index} />
+                            <div style={{ width: '235px' }}>
+                                {item.map((element, index) =>
+                                    <>
+                                        <ProductItem item={element} key={index} />
 
-                                            : ''
-                                    }
-
-                                </>
-                            )}
-                        </div>
+                                    </>
+                                )}
+                            </div>
 
 
 
-                    )}
+                        )
+                        : mySkelton
+                    }
                 </Box>
             </InfiniteScroll>
             {/* </div> */}

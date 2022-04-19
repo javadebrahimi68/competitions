@@ -18,7 +18,7 @@ export const ProductItem = ({ item,ind }) => {
             src={`${item.image_url}`}//?w=248&fit=crop&auto=format`}
             srcSet={`${item.image_url}`}//?w=248&fit=crop&auto=format&dpr=2 2x`}
             alt={item.name}
-            loading="lazy"
+             loading="lazy"
 
 
           />
