@@ -8,56 +8,59 @@ import { rawData1 } from '../../rawData';
 import useWindowDimensions from '../dimentions';
 import { ProductItem } from '../ProductItem';
 
-export const Masonry = ({fetchData,data,loaded}) => {
-   
+export const Masonry = ({ fetchData, data, loaded, onSearch }) => {
+
     useEffect(() => {
         fetchData();
     }, [])
 
     return (
         <>
-  <InfiniteScroll
+            <InfiniteScroll
                 dataLength={data}
                 next={() => fetchData()}
                 hasMore={true}
                 loader={
                     <>
-                        <p><CircularProgress color="success" /></p>
+                        <p style={
+                            onSearch? {display:'none'}:
+                            {display:''}
+                            } ><CircularProgress color="success" /></p>
                     </>
                 }
             >
-            {/* <div className="image-grid" style={{ marginTop: "30px" ,display:'flex'}}> */}
-            <Box className='image-grid'
-                // ml={10} mr={10}
-                sx={{
-                    display: 'inline-flex',
-                    justifyContent: 'space-around',
-                    width: '100%'
-                    //  , height: 450, 
-                    // overflowY: 'scroll' 
+                {/* <div className="image-grid" style={{ marginTop: "30px" ,display:'flex'}}> */}
+                <Box className='image-grid'
+                    // ml={10} mr={10}
+                    sx={{
+                        display: 'inline-flex',
+                        justifyContent: 'space-around',
+                        width: '100%'
+                        //  , height: 450, 
+                        // overflowY: 'scroll' 
 
-                }}>
-                {data.map((item) =>
+                    }}>
+                    {data.map((item) =>
 
-                    <div style={{ width: '235px' }}>
-                        {item.map((element, index) =>
-                            <>
-                                {
-                                    loaded ?
+                        <div style={{ width: '235px' }}>
+                            {item.map((element, index) =>
+                                <>
+                                    {
+                                        loaded ?
 
-                                    <ProductItem item={element} key={index} />
+                                            <ProductItem item={element} key={index} />
 
-                                     : ''
-                                }
+                                            : ''
+                                    }
 
-                            </>
-                        )}
-                    </div>
+                                </>
+                            )}
+                        </div>
 
 
 
-                )}
-            </Box>
+                    )}
+                </Box>
             </InfiniteScroll>
             {/* </div> */}
 
